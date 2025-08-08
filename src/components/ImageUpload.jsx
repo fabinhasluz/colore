@@ -169,16 +169,21 @@ const ImageUpload = ({ images, setImages, maxImages = 5 }) => {
             Fotos Enviadas ({images.length}/{maxImages})
           </h5>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {images.map((image) => (
-              <Card key={image.id} className="relative group overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="aspect-square relative">
-                    <img
-                      src={image.preview}
-                      alt={image.name}
-                      className="w-full h-full object-cover"
-                    />
+         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+  {Array.isArray(images) && images.map((img) => (
+    <Card key={img.id} className="relative group overflow-hidden">
+      <CardContent className="p-0">
+        <div className="aspect-square relative">
+          <img
+            src={img.preview}
+            alt={img.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </CardContent>
+    </Card>
+  ))}
+</div>
                     
                     {/* Remove Button */}
                     <button
